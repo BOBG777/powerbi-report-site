@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>安全报表访问</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input[type="password"] {
+      padding: 10px;
+      width: 200px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>请输入访问密码</h2>
+    <input type="password" id="password" placeholder="请输入密码">
+    <br>
+    <button onclick="checkPassword()">进入报表</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      const correctPwd = "oakwood2025";  // 👉 设置你的密码
+      const reportURL = "https://app.powerbi.com/view?r=eyJrIjoiXXXXXXX";  // 👉 替换为你的报表链接
+
+      if (pwd === correctPwd) {
+        window.location.href = reportURL;
+      } else {
+        document.getElementById("error").innerText = "❌ 密码错误，请重试。";
+      }
+    }
+  </script>
+</body>
+</html>
